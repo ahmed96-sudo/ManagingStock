@@ -5,6 +5,7 @@ import Bl from './components/Bl';
 import Devis from './components/Devis';
 import Factur from './components/Factur';
 import Login from './components/Login';
+import { Analytics } from "@vercel/analytics/react";
 
 
 // https://managementstock.herokuapp.com/
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/devis" element={<Devis />} />
         <Route path="/facture" element={<Factur />} />
       </Routes>
+      <Analytics />
     </>
   )
 }
