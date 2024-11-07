@@ -8,10 +8,10 @@ const Login = () => {
     const handleSubmit = (e)=>{
         const input_user = document.getElementById("inputuser").value;
         const input_pass = document.getElementById("inputpassword").value;
-        const log_obj = {
+        /* const log_obj = {
             input_user: input_user,
             input_pass: input_pass
-        };
+        }; */
         e.preventDefault();
         /* fetch("http://localhost:5000/login",{
             method: "POST",
