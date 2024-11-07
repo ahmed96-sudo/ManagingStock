@@ -1,6 +1,7 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import usericon from  '../usericon.jpg';
 const Dashboard = () => {
     const navigate = useNavigate();
     const [name, setName] = useState('');
@@ -77,7 +78,7 @@ const Dashboard = () => {
                 error
             );
         }); */
-        setName('Admin');
+        setName("Admin");
         if (window.location.pathname == "/dashboard") {
             document.getElementById("menu1").classList.add("bg-[#6B7A94]");
         }
@@ -410,7 +411,7 @@ const Dashboard = () => {
                                 <div className='h-full w-[300px]'>
                                     <div className='h-full w-full flex justify-center items-center'>
                                         <div className='w-[40px]'>
-                                            <img className='h-[30px] w-[30px]' src='src/usericon.jpg' alt="user-icon" />
+                                            <img className='h-[30px] w-[30px]' src={usericon} alt="user-icon" />
                                         </div>
                                         <div className='w-[130px]'>
                                             <div className='text-center'>
