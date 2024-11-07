@@ -410,7 +410,7 @@ const Dashboard = () => {
                                 <div className='h-full w-[300px]'>
                                     <div className='h-full w-full flex justify-center items-center'>
                                         <div className='w-[40px]'>
-                                            <img className='h-[30px] w-[30px]' src='/src/usericon.jpg' alt="user-icon" />
+                                            <img className='h-[30px] w-[30px]' src='src/usericon.jpg' alt="user-icon" />
                                         </div>
                                         <div className='w-[130px]'>
                                             <div className='text-center'>
