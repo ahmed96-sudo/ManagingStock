@@ -10,129 +10,74 @@ import '../../src/fontawesome-free-5.15.3-web/css/solid.css';
 
 class Bl extends Component {
     constructor(props) {
-
         super(props);
-
         this.state = {
-
             info_list_bl : [],
             money_info_list_bl : {},
             all_info : {},
             blinfo : {}
         }
-
     }
     componentDidMount(){
-
         fetch("https://asyd12855.pythonanywhere.com/bl/" + window.location.pathname.substr(4),{
-
             method: "GET",
-
             headers: {
-
                 "Content-Type": "application/json"
-
             }
-
         })
-
         .then(response => response.json())
-
         .then(data => {
-
             this.setState({
-
                 info_list_bl: data.info_list_bl,
                 money_info_list_bl : data.money_info_list_bl,
                 blinfo : data.blinfo
-
             })
-
         })
-
         .catch(error => {
-
             console.error(
-
                 "There has been a problem:",
-
                 error
-
             );
-
         });
         fetch("https://asyd12855.pythonanywhere.com/settingsinfo",{
-
             method: "GET",
-
             headers: {
-
                 "Content-Type": "application/json"
-
             }
-
         })
-
         .then(response => response.json())
-
         .then(data => {
-
             this.setState({
-
                 all_info : data.all_info
-
             })
-
         })
-
         .catch(error => {
-
             console.error(
-
                 "There has been a problem:",
-
                 error
-
             );
-
         });
-
     }
     submit_download = (e) => {
         e.preventDefault();
         if (window.confirm("Are you sure you want to download the B.L. ?")) {
             fetch("https://asyd12855.pythonanywhere.com/downloadbl/" + window.location.pathname.substr(4),{
-
                 method: "GET",
-
                 headers: {
-
                     "Content-Type": "application/json"
-
                 }
-
             })
-
             .then(response => response.json())
-
             .then(data => {
-
                 let name_of_factur = data.bl_id;
                 window.open("https://asyd12855.pythonanywhere.com/sendbl/" + name_of_factur, "_blank");
                 window.open("https://asyd12855.pythonanywhere.com/removebl/" + name_of_factur, "_blank");
-
             })
-
             .catch(error => {
-
                 console.error(
-
                     "There has been a problem:",
-
                     error
-
                 );
-
             });
         }
     }
@@ -164,35 +109,20 @@ class Bl extends Component {
                 </div>
                 <div className="table_bl">
                     <table>
-
                         <thead>
-
                             <tr>
-
                                 <th>Code</th>
-
                                 <th>Desi</th>
-
                                 <th>P.U</th>
-
                                 <th>QTY</th>
-
                                 <th>Remise</th>
-
                                 <th>Total</th>
-
                             </tr>
-
                         </thead>
-
                         <tbody>
-
                             {
-
                                 this.state.info_list_bl.map((val, index) => {
-
                                     return (
-
                                         <tr key={index}>
                                             <td>{val.referance_info}</td>
                                             <td>{val.description_info}</td>
@@ -201,23 +131,14 @@ class Bl extends Component {
                                             <td>{val.remise_info}</td>
                                             <td>{val.total_info}</td>
                                         </tr>
-
                                     );
-
                                 })
-
                             }
-
                             <tr>
-
                                 <td colSpan='5'>Total sans TVA</td>
-
                                 <td colSpan='1'>{this.state.money_info_list_bl.total_ht_money}</td>
-
-                            </tr> 
-
+                            </tr>
                         </tbody>
-
                     </table>
                 </div>
                 <div className="signature">

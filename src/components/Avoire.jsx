@@ -10,129 +10,74 @@ import '../../src/fontawesome-free-5.15.3-web/css/solid.css';
 
 class Avoire extends Component {
     constructor(props) {
-
         super(props);
-
         this.state = {
-
             info_list_avoire : [],
             money_info_list_avoire : {},
             all_info : {},
             avoireinfo : {}
         }
-
     }
     componentDidMount(){
-
         fetch("https://asyd12855.pythonanywhere.com/avoire/" + window.location.pathname.substr(8),{
-
             method: "GET",
-
             headers: {
-
                 "Content-Type": "application/json"
-
             }
-
         })
-
         .then(response => response.json())
-
         .then(data => {
-
             this.setState({
-
                 info_list_avoire: data.info_list_avoire,
                 money_info_list_avoire : data.money_info_list_avoire,
                 avoireinfo : data.avoireinfo
-
             })
-
         })
-
         .catch(error => {
-
             console.error(
-
                 "There has been a problem:",
-
                 error
-
             );
-
         });
         fetch("https://asyd12855.pythonanywhere.com/settingsinfo",{
-
             method: "GET",
-
             headers: {
-
                 "Content-Type": "application/json"
-
             }
-
         })
-
         .then(response => response.json())
-
         .then(data => {
-
             this.setState({
-
                 all_info : data.all_info
-
             })
-
         })
-
         .catch(error => {
-
             console.error(
-
                 "There has been a problem:",
-
                 error
-
             );
-
         });
-
     }
     submit_download = (e) => {
         e.preventDefault();
         if (window.confirm("Are you sure you want to download the Avoire?")) {
             fetch("https://asyd12855.pythonanywhere.com/downloadavoire/" + window.location.pathname.substr(8),{
-
                 method: "GET",
-
                 headers: {
-
                     "Content-Type": "application/json"
-
                 }
-
             })
-
             .then(response => response.json())
-
             .then(data => {
-
                 let name_of_factur = data.avoire_id;
                 window.open("https://asyd12855.pythonanywhere.com/sendavoire/" + name_of_factur, "_blank");
                 window.open("https://asyd12855.pythonanywhere.com/removeavoire/" + name_of_factur, "_blank");
-
             })
-
             .catch(error => {
-
                 console.error(
-
                     "There has been a problem:",
-
                     error
-
                 );
-
             });
         }
     }
@@ -166,35 +111,20 @@ class Avoire extends Component {
                 </div>
                 <div className="table_avoire">
                     <table>
-
                         <thead>
-
                             <tr>
-
                                 <th>Code</th>
-
                                 <th>Desi</th>
-
                                 <th>P.U</th>
-
                                 <th>QTY</th>
-
                                 <th>Remise</th>
-
                                 <th>Total</th>
-
                             </tr>
-
                         </thead>
-
                         <tbody>
-
                             {
-
                                 this.state.info_list_avoire.map((val, index) => {
-
                                     return (
-
                                         <tr key={index}>
                                             <td>{val.referance_info}</td>
                                             <td>{val.description_info}</td>
@@ -203,38 +133,26 @@ class Avoire extends Component {
                                             <td>{val.remise_info}</td>
                                             <td>{val.total_info}</td>
                                         </tr>
-
                                     );
-
                                 })
-
                             }
-
                             <tr>
-
                                 <td colSpan='5'>Total HT</td>
-
                                 <td colSpan='1'>{this.state.money_info_list_avoire.total_ht_money}</td>
-
                             </tr>
-
                             <tr>
                                 <td colSpan='5'>Total Remise</td>
                                 <td colSpan='1'>{this.state.money_info_list_avoire.total_remise_money}</td>
                             </tr>
-
                             <tr>
                                 <td colSpan='5'>TVA 20%</td>
                                 <td colSpan='1'>{this.state.money_info_list_avoire.tva_money_info}</td>
                             </tr>
-
                             <tr>
                                 <td colSpan='5'>Total TTC</td>
                                 <td colSpan='1'>{this.state.money_info_list_avoire.total_ttc_money}</td>
                             </tr>
-
                         </tbody>
-
                     </table>
                 </div>
                 <div className="signature">

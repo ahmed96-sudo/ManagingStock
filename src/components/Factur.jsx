@@ -10,129 +10,74 @@ import '../../src/fontawesome-free-5.15.3-web/css/solid.css';
 
 class Factur extends Component {
     constructor(props) {
-
         super(props);
-
         this.state = {
-
             info_list_factur : [],
             money_info_list_factur : {},
             all_info : {},
             facturinfo : {}
         }
-
     }
     componentDidMount(){
-
         fetch("https://asyd12855.pythonanywhere.com/factur/" + window.location.pathname.substr(8),{
-
             method: "GET",
-
             headers: {
-
                 "Content-Type": "application/json"
-
             }
-
         })
-
         .then(response => response.json())
-
         .then(data => {
-
             this.setState({
-
                 info_list_factur: data.info_list_factur,
                 money_info_list_factur : data.money_info_list_factur,
                 facturinfo : data.facturinfo
-
             })
-
         })
-
         .catch(error => {
-
             console.error(
-
                 "There has been a problem:",
-
                 error
-
             );
-
         });
         fetch("https://asyd12855.pythonanywhere.com/settingsinfo",{
-
             method: "GET",
-
             headers: {
-
                 "Content-Type": "application/json"
-
             }
-
         })
-
         .then(response => response.json())
-
         .then(data => {
-
             this.setState({
-
                 all_info : data.all_info
-
             })
-
         })
-
         .catch(error => {
-
             console.error(
-
                 "There has been a problem:",
-
                 error
-
             );
-
         });
-
     }
     submit_download = (e) => {
         e.preventDefault();
         if (window.confirm("Are you sure you want to download the Facture?")) {
             fetch("https://asyd12855.pythonanywhere.com/downloadfactur/" + window.location.pathname.substr(8),{
-
                 method: "GET",
-
                 headers: {
-
                     "Content-Type": "application/json"
-
                 }
-
             })
-
             .then(response => response.json())
-
             .then(data => {
-
                 let name_of_factur = data.factur_id;
                 window.open("https://asyd12855.pythonanywhere.com/sendfactur/" + name_of_factur, "_blank");
                 window.open("https://asyd12855.pythonanywhere.com/removefactur/" + name_of_factur, "_blank");
-
             })
-
             .catch(error => {
-
                 console.error(
-
                     "There has been a problem:",
-
                     error
-
                 );
-
             });
         }
     }
@@ -165,35 +110,20 @@ class Factur extends Component {
                 </div>
                 <div className="table_factur">
                     <table>
-
                         <thead>
-
                             <tr>
-
                                 <th>Code</th>
-
                                 <th>Desi</th>
-
                                 <th>P.U</th>
-
                                 <th>QTY</th>
-
                                 <th>Remise</th>
-
                                 <th>Total</th>
-
                             </tr>
-
                         </thead>
-
                         <tbody>
-
                             {
-
                                 this.state.info_list_factur.map((val, index) => {
-
                                     return (
-
                                         <tr key={index}>
                                             <td>{val.referance_info}</td>
                                             <td>{val.description_info}</td>
@@ -202,38 +132,26 @@ class Factur extends Component {
                                             <td>{val.remise_info}</td>
                                             <td>{val.total_info}</td>
                                         </tr>
-
                                     );
-
                                 })
-
                             }
-
                             <tr>
-
                                 <td colSpan='5'>Total HT</td>
-
                                 <td colSpan='1'>{this.state.money_info_list_factur.total_ht_money}</td>
-
                             </tr>
-
                             <tr>
                                 <td colSpan='5'>Total Remise</td>
                                 <td colSpan='1'>{this.state.money_info_list_factur.total_remise_money}</td>
                             </tr>
-
                             <tr>
                                 <td colSpan='5'>TVA 20%</td>
                                 <td colSpan='1'>{this.state.money_info_list_factur.tva_money_info}</td>
                             </tr>
-
                             <tr>
                                 <td colSpan='5'>Total TTC</td>
                                 <td colSpan='1'>{this.state.money_info_list_factur.total_ttc_money}</td>
                             </tr>
-
                         </tbody>
-
                     </table>
                 </div>
                 <div className="signature">

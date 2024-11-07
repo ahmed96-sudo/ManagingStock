@@ -1,0 +1,10 @@
+1. 4 pages for suppliers:one for table of (credits for suppliers), one for trading and adding money and product invoices for that credits to be removed, one for suppliers invoices, one for adding and removing and editing the supplier invoices 
+2. 1 page for client: one for adding and removing money for the invoices or client credits,  which goes for client credits which also I will change it a little bit and i have to add checkbox for each row in table for checking some or one by one in the table
+3. 3 pages for bank pages: one for adding an account , one for table of accounts, one for adding and removing and all for the specified account maybe it will be in the table page
+4. 1 page for charges: one for the edit
+5. 3 page of safe or money : one for table with rows of days of the month and the table goes on with days only and the row have money in the day , one for adding and removing from the row of the day, one for table of months 
+NOTE(4,5):the charges will be removed automaticlly from the safe of the days
+6. 8 pages for employees: one for adding and removing the employee, one for the table of the employees, one for عمولة table , one for عمولة adding and removing and editing from table, one for خصم table page, one for خصم adding and removing and editing from table with a choice between typing the number to be removed or typing the number of days to be removed from salary, one for مكافاءة table page, one for مكافاءة adding and removing from table with a choice between typing the number to be added or typing the number of days to be added to the salary
+7. 4 pages for partners : one for adding and removing partner, one for table of partners, one for table of percentage of money, one for adding and removing from table of percentage of money 
+8. 2 pages for product: one for table of qty of the product, one for adding and removing in the table of qty of the product
+9. doing the accounts for admin and sales and secertary
