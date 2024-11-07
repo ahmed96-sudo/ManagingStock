@@ -77,7 +77,7 @@ const Dashboard = () => {
                 error
             );
         }); */
-        setName("Ahmed");
+        setName('Admin');
         if (window.location.pathname == "/dashboard") {
             document.getElementById("menu1").classList.add("bg-[#6B7A94]");
         }
@@ -202,7 +202,7 @@ const Dashboard = () => {
     }
     const handlelogout = (e)=>{
         e.preventDefault();
-        // document.cookie = 'token=';
+        document.cookie = 'token=';
         nav('/');
     }
     return (
