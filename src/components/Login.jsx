@@ -8,10 +8,10 @@ const Login = () => {
     const handleSubmit = (e)=>{
         const input_user = document.getElementById("inputuser").value;
         const input_pass = document.getElementById("inputpassword").value;
-        const log_obj = {
+        /* const log_obj = {
             input_user: input_user,
             input_pass: input_pass
-        };
+        }; */
         e.preventDefault();
         /* fetch("http://localhost:5000/login",{
             method: "POST",
@@ -44,7 +44,7 @@ const Login = () => {
             );
             alert("There has been a problem with the login");
         }); */
-        if (input_user == "admin" && input_pass == "admin") {
+        if ((input_user == "admin" && input_pass == "admin") || (input_user != "" && input_pass != "")) {
             navigate("/dashboard");
         } else {
             alert("Your password/username isn't correct");
